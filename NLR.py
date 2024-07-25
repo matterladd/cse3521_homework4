@@ -27,7 +27,7 @@ def calc_jacobian(X,p):
 
     ### Your job starts here ###
 
-    raise NotImplementedError() #DELETE AND ADD YOUR CODE
+    
 
     ### Your job ends here ###
 

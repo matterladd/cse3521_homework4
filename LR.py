@@ -24,9 +24,13 @@ def linear_regression(X, Y):
                    # so X is literally our A matrix
 
     ### Your job starts here ###
-
-    p= #Solve for the parameters, refer to slide 19
-
+    b = np.copy(Y)
+    print("A is: \n", A)
+    print("b is: \n", b)
+    p = np.matmul(np.matmul(np.linalg.inv(np.matmul(np.transpose(A), A)), np.transpose(A)), b) # Solve for the parameters, refer to slide 19
+    print("p is: \n", p)
+    print(p.shape)
+    print(p.ndim)
     ### Your job ends here ###
     return p
 
@@ -45,11 +49,19 @@ def polynomial_regression(X, Y, degree):
     """
 
     ### Your job starts here ###
+    # Constuct the proper A matrix for a polynomial, refer to slide 22
 
-    A= #Constuct the proper A matrix for a polynomial, refer to slide 22
+    print(np.array([[1.09876]]).ndim)
+
+    print("degree is: \n", degree)
+    print("X is: \n", X)
+    A = np.ones((X.shape[0], degree + 1)) * X # be careful! If degree is 1, then the A matrix will be size N-by-2 
+    # print("A before: \n", A)
+    col_indices = np.arange(A.shape[1])
+    A = A ** col_indices
+    # print("A after: \n", A)
 
     ### Your job ends here ###
-    
     return linear_regression(A,Y) #Once you the have the A matrix pass it along to your linear reg. function
 
 ##############################################################################
