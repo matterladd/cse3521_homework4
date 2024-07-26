@@ -27,7 +27,11 @@ def calc_jacobian(X,p):
 
     ### Your job starts here ###
 
-    
+    for i in range(J.shape[0]):
+        J[i][0] = X[i][0] ** p[1][0]                                # x^b
+        J[i][1] = p[0][0] * X[i][0] ** p[1][0] * np.log(X[i][0])    # ax^b * log(x)
+        J[i][2] = X[i][0]                                           # x
+        J[i][3] = 1                                                 # 1
 
     ### Your job ends here ###
 
