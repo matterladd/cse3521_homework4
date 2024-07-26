@@ -60,10 +60,11 @@ def nonlinear_regression_gn(X, Y, initialP):
     p=np.copy(initialP)
 
     ### Your job starts here ###
-
     for iteration in range(GAUSS_NEWTON_ITERATIONS): #PLEASE do not change this line
-      raise NotImplementedError() #DELETE AND ADD YOUR CODE
-
+      delta_y = Y - model_function(X, p)
+      J = calc_jacobian(X, p)
+      delta_p = np.matmul(np.matmul(np.linalg.inv(np.matmul(np.transpose(J), J)), np.transpose(J)), delta_y)
+      p = p + delta_p
     ### Your job ends here ###
     return p
 
