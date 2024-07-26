@@ -37,7 +37,7 @@ def calc_jacobian(X,p):
 
     return J
 
-GAUSS_NEWTON_ITERATIONS=1000 #PLEASE change your iteration count here
+GAUSS_NEWTON_ITERATIONS=13 #PLEASE change your iteration count here
 def nonlinear_regression_gn(X, Y, initialP):
     """
     Estimate parameters for model function a*(x**b)+c*x+d
@@ -68,8 +68,8 @@ def nonlinear_regression_gn(X, Y, initialP):
     ### Your job ends here ###
     return p
 
-GRADIENT_DESCENT_ITERATIONS=100000
-LEARNING_RATE=1e-6 #WARNING, this is probably too small!
+GRADIENT_DESCENT_ITERATIONS=5
+LEARNING_RATE=1e-2 #WARNING, this is probably too small!
 def nonlinear_regression_gd(X, Y, initialP):
     """
     Estimate parameters for model function a*(x**b)+c*x+d
@@ -92,9 +92,11 @@ def nonlinear_regression_gd(X, Y, initialP):
 
     ### Your job starts here ###
 
-
     for iteration in range(GRADIENT_DESCENT_ITERATIONS): #PLEASE do not change this line
-      raise NotImplementedError() #DELETE AND ADD YOUR CODE
+      delta_y = Y - model_function(X, p)
+      J = calc_jacobian(X, p)
+      error_gradient = -2 * np.matmul(np.transpose(J), delta_y)
+      p = p - LEARNING_RATE * error_gradient
     # PLEASE use LEARNING_RATE variable defined above
 
 
